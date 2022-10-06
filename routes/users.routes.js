@@ -11,6 +11,7 @@ const {
   getUserOrders,
   getUserOrderById,
 } = require('../controllers/orders.controller');
+const { getUserProducts } = require('../controllers/products.controller');
 
 // Middlewares
 const { userExists } = require('../middlewares/users.middlewares');
@@ -39,7 +40,7 @@ usersRouter.patch('/:id', userExists, protectUsersAccount, updateUser);
 
 usersRouter.delete('/:id', userExists, protectUsersAccount, deleteUser);
 
-usersRouter.get('/me');
+usersRouter.get('/me', getUserProducts);
 
 usersRouter.get('/orders', getUserOrders);
 

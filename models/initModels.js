@@ -19,7 +19,10 @@ const initModels = () => {
   Cart.belongsTo(User);
 
   // M Cart ---> M Products trough ProductsInCart
-  Product.belongsToMany(Cart, { through: 'productsInCart' });
+  Product.belongsToMany(Cart, {
+    through: 'productsInCarts',
+  });
+  Cart.belongsToMany(Product, { through: 'productsInCarts' });
 
   // 1 Product ---> 1 Category
   Product.belongsTo(Category);
